@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>{{ notice }}</p>
+    <p>Week 8</p>
+    <form action='/edit_picks' method='POST'>
+      <input type='hidden' name='week' value='8'></input>
+
+      <datalist id="candidates">
+        {{#candidates}}
+        <option value='{{name}}'>{{name}}</option>
+        {{/candidates}}
+      </datalist>
+
+      <p>
+        <label>First</label>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{first}}' />
+        {{/with}}
+      </p>
+      <p>
+        <label>Second</label>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{second}}' />
+        {{/with}}
+      </p>
+      <p>
+        <label>Third</label>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{third}}' />
+        {{/with}}
+      </p>
+      <p>
+        <label>Fourth</label>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{fourth}}' />
+        {{/with}}
+      </p>
+      <p>
+      <input type='submit'>Submit week 8 results</input>
+      </p>
+    </form>
+  </body>
+</html>

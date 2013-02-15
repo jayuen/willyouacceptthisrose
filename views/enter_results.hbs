@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>{{ notice }}</p>
+    <p>Week 8</p>
+    <form action='/enter_results' method='POST'>
+      <input type='hidden' name='week' value='8'></input>
+      <p>
+        <label>First</label>
+        <select name='first'>
+          {{#candidates}}
+          <option value='{{name}}'>{{name}}</option>
+          {{/candidates}}
+        </select>
+      </p>
+      <p>
+        <label>Second</label>
+        <select name='second'>
+          {{#candidates}}
+          <option value='{{name}}'>{{name}}</option>
+          {{/candidates}}
+        </select>
+      </p>
+      <p>
+        <label>Third</label>
+        <select name='third'>
+          {{#candidates}}
+          <option value='{{name}}'>{{name}}</option>
+          {{/candidates}}
+        </select>
+      </p>
+      <p>
+        <label>Fourth</label>
+        <select name='fourth'>
+          {{#candidates}}
+          <option value='{{name}}'>{{name}}</option>
+          {{/candidates}}
+        </select>
+      </p>
+      <p>
+      <input type='submit'>Submit week 8 results</input>
+      </p>
+    </form>
+  </body>
+</html>
