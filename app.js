@@ -34,7 +34,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/edit_my_picks', picks.edit.bind(results));
+app.get('/edit_my_picks', picks.edit.bind(picks));
 app.get('/enter_results', results.enter.bind(results));
 app.post('/enter_results', results.submit.bind(results));
 

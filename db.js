@@ -27,6 +27,20 @@ var db = {
     });
 
     return result.promise;
+  },
+
+  findUser: function(name){
+    var result = defer();
+
+    client.query("SELECT * FROM users WHERE name = '" + name + "'", function(err, data){
+      if(!err){
+        result.resolve(data.rows[0]);
+      }else{
+        result.reject(err);
+      }
+    });
+
+    return result.promise
   }
 };
 

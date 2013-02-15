@@ -101,3 +101,10 @@ ALTER TABLE "users" ADD CONSTRAINT "users_pkey" PRIMARY KEY ("id") NOT DEFERRABL
 -- ----------------------------
 ALTER TABLE "candidates" ADD CONSTRAINT "girls_pkey" PRIMARY KEY ("id") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
+INSERT INTO "candidates" (name) VALUES ('Catherine');
+INSERT INTO "candidates" (name) VALUES ('Desiree');
+INSERT INTO "candidates" (name) VALUES ('Ashlee');
+INSERT INTO "candidates" (name) VALUES ('Lindsay');
+
+INSERT INTO users (email, name, score) VALUES ('jasony@nulogy.com', 'Jason Yuen', 6);
+INSERT INTO users (email, name, score) VALUES ('emilys@nulogy.com', 'Emily Stover', 5);

@@ -1,15 +1,14 @@
+var db = require('../db')
+var q = require('q')
+
 module.exports = {
   edit: function(req, res){
-    //DB call to get the user
-    var user = {name: 'Jason'}
-    res.render("edit_picks", {
-      title: "Make your final picks",
-      candidates: this.candidates(),
-      picks: {first: "Lindsay", second: "Catherine", third: "Desiree", fourth: "Ashlee"}
-    })
-  },
-
-  candidates: function(){
-    return [{name: 'Catherine'}, {name: 'Ashlee'}, {name:'Desiree'}, {name:'Lindsay'}]
+    q.all([db.findUser('Jason Yuen'), db.findAllCandidates()]).spread(function(user, candidates){
+      res.render("edit_picks", {
+        title: "Make your final picks",
+        candidates: candidates,
+        picks: {first: user.pick1, second: user.pick2, third: user.pick3, fourth: user.pick4 }
+      })
+    }) 
   }
 };
