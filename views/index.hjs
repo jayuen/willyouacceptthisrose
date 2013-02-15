@@ -6,6 +6,9 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <p>Will you accept this rose?</p>
+    <p>Placeholder for scoreboard</p>
+    <a href='/edit_my_picks'>Make your picks</a>
+    <a href='/enter_results'>Enter results</a>
   </body>
 </html>
