@@ -3,7 +3,7 @@ var expect = require("chai").expect;
 var db = require("../db");
 var step = require("step");
 
-var connection = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose";
+var connection = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose_test";
 var client = pg.Client(connection);
 
 client.connect();
@@ -62,6 +62,37 @@ describe("DB", function(){
           var data = results.rows[0];
 
           expect(data.email).to.equal('foo@bar.net');
+          this();
+        },
+        done
+      );
+    });
+
+    it("can have picks updated", function(done){
+      var user = {
+        email: 'foo@bar.net',
+        pick1: 'one',
+        pick2: '2'
+      };
+
+      step(
+        function(){
+          db.insertUser(user.email).then(this)
+        },
+        function(){
+          db.updatePicks(user)
+        },
+        function(){
+          client.query("SELECT * FROM users", this)
+        },
+        function(err, result){
+          var data = result.rows[0];
+
+          expect(data.pick1).to.equal('one');
+          expect(data.pick2).to.equal('2');
+          expect(data.pick3).to.be.undefined;
+          expect(data.pick4).to.be.undefined;
+
           this();
         },
         done

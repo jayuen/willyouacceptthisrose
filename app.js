@@ -12,6 +12,8 @@ var express = require('express')
   , restrict = require('./auth').restrict
   , passport = require('./auth').passport
   , authenticate = require('./auth').authenticate
+  , hbs = require('hbs')
+  , flash = require('connect-flash')
 
 var app = express();
 
@@ -19,6 +21,7 @@ app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'hbs');
+  app.use(flash());
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -36,15 +39,20 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/edit_my_picks', picks.edit.bind(picks));
-app.get('/enter_results', results.enter.bind(results));
-app.post('/enter_results', results.submit.bind(results));
+app.get('/', restrict, routes.index);
+app.get('/edit_my_picks', restrict, picks.edit);
+app.post('/edit_picks', restrict, picks.submit);
+app.get('/enter_results', restrict, results.enter.bind(results));
+app.post('/enter_results', restrict, results.submit.bind(results));
 app.get('/login', authenticate);
 app.get('/login/return', authenticate);
 app.get('/login/fail', routes.failedLogin);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
+});
+
+hbs.registerHelper('selected-if-equal', function(val1, val2){
+  console.log("IN HELPER!!!!", val1, val2)
+  return (val1 == val2) ? " selected='selected'" : ""
 });

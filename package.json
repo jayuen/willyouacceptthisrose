@@ -13,7 +13,8 @@
     "q": "*",
     "step": "*",
     "passport": "*",
-    "passport-google": "*"
+    "passport-google": "*",
+    "connect-flash": "*"
   },
   "devDependencies": {
     "mocha": "*",

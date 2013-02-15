@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>{{ notice }}</p>
-    <p>Week 8</p>
-    <form action='/edit_picks' method='POST'>
-      <input type='hidden' name='week' value='8'></input>
+<head>
+  <title>{{ title }}</title>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <link rel='stylesheet' href='/stylesheets/select2.css'/>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/select2.js"></script>
+</head>
+<body>
+<h1>{{ title }}</h1>
 
-      <datalist id="candidates">
+<p>{{ notice }}</p>
+
+<p>Week 8</p>
+
+<div class="form">
+  <form action='/edit_picks' method='POST'>
+    <input type='hidden' name='week' value='8'/>
+
+    <p>
+      <label>First</label><br/>
+      <select name="pick1">
+        <option value=''></option>
         {{#candidates}}
-        <option value='{{name}}'>{{name}}</option>
+          <option value='{{id}}'{{selected-if-equal id user/pick1}}>{{name}}</option>
         {{/candidates}}
-      </datalist>
+      </select>
+    </p>
+    <p>
+      <label>Second</label><br/>
+      <select name="pick2">
+        <option value=''></option>
+        {{#candidates}}
+          <option value='{{id}}'{{selected-if-equal id user/pick2}}>{{name}}</option>
+        {{/candidates}}
+      </select>
+    </p>
+    <p>
+      <label>Third</label><br/>
+      <select name="pick3">
+        <option value=''></option>
+        {{#candidates}}
+          <option value='{{id}}'{{selected-if-equal id user/pick3}}>{{name}}</option>
+        {{/candidates}}
+      </select>
+    </p>
+    <p>
+      <label>Fourth</label><br/>
+      <select name="pick4">
+        <option value=''></option>
+        {{#candidates}}
+          <option value='{{id}}'{{selected-if-equal id user/pick4}}>{{name}}</option>
+        {{/candidates}}
+      </select><br/>
+    </p>
 
-      <p>
-        <label>First</label>
-        {{#with picks}}
-        <input name='first' list='candidates' value='{{first}}' />
-        {{/with}}
-      </p>
-      <p>
-        <label>Second</label>
-        {{#with picks}}
-        <input name='first' list='candidates' value='{{second}}' />
-        {{/with}}
-      </p>
-      <p>
-        <label>Third</label>
-        {{#with picks}}
-        <input name='first' list='candidates' value='{{third}}' />
-        {{/with}}
-      </p>
-      <p>
-        <label>Fourth</label>
-        {{#with picks}}
-        <input name='first' list='candidates' value='{{fourth}}' />
-        {{/with}}
-      </p>
-      <p>
-      <input type='submit'>Submit week 8 results</input>
-      </p>
-    </form>
-  </body>
+    <p>
+      <button>Submit week 8 results</button>
+    </p>
+  </form>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $("select").select2({
+      placeholder: "Select a Girl",
+      allowClear: true,
+      width: '260px'
+    });
+  })
+</script>
+</body>
 </html>

@@ -1,4 +1,5 @@
-npm_modules
-views/*.styl
-public/*.*
-.git
+**/npm_modules/**
+**/views/**
+**/public/**
+**/.idea/**
+**/.git/**

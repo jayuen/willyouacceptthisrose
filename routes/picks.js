@@ -3,12 +3,23 @@ var q = require('q')
 
 module.exports = {
   edit: function(req, res){
-    q.all([db.findUser('Jason Yuen'), db.findAllCandidates()]).spread(function(user, candidates){
+    db.findAllCandidates().then(function(candidates){
+      var user = req.user;
+      console.log(req.flash)
+
       res.render("edit_picks", {
         title: "Make your final picks",
+        notice: req.flash('info'),
         candidates: candidates,
-        picks: {first: user.pick1, second: user.pick2, third: user.pick3, fourth: user.pick4 }
+        user: user
       })
-    }) 
+    })
+  },
+
+  submit: function(req, res){
+    req.flash('info', 'Successfully Saved Picks!');
+    res.redirect('/edit_my_picks');
+
+
   }
 };

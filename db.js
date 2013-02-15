@@ -67,6 +67,10 @@ var db = {
     }, result.reject);
 
     return result.promise;
+  },
+
+  updatePicks: function(user){
+
   }
 };
 
