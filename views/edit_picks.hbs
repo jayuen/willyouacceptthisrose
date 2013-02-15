@@ -10,37 +10,36 @@
     <p>Week 8</p>
     <form action='/edit_picks' method='POST'>
       <input type='hidden' name='week' value='8'></input>
+
+      <datalist id="candidates">
+        {{#candidates}}
+        <option value='{{name}}'>{{name}}</option>
+        {{/candidates}}
+      </datalist>
+
       <p>
         <label>First</label>
-        <select name='first'>
-          {{#candidates}}
-          <option value='{{name}}'>{{name}}</option>
-          {{/candidates}}
-        </select>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{first}}' />
+        {{/with}}
       </p>
       <p>
         <label>Second</label>
-        <select name='second'>
-          {{#candidates}}
-          <option value='{{name}}'>{{name}}</option>
-          {{/candidates}}
-        </select>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{second}}' />
+        {{/with}}
       </p>
       <p>
         <label>Third</label>
-        <select name='third'>
-          {{#candidates}}
-          <option value='{{name}}'>{{name}}</option>
-          {{/candidates}}
-        </select>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{third}}' />
+        {{/with}}
       </p>
       <p>
         <label>Fourth</label>
-        <select name='fourth'>
-          {{#candidates}}
-          <option value='{{name}}'>{{name}}</option>
-          {{/candidates}}
-        </select>
+        {{#with picks}}
+        <input name='first' list='candidates' value='{{fourth}}' />
+        {{/with}}
       </p>
       <p>
       <input type='submit'>Submit week 8 results</input>
