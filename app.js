@@ -8,10 +8,10 @@ var express = require('express')
   , picks = require('./routes/picks')
   , results = require('./routes/results')
   , http = require('http')
-  , path = require('path');
-  , restrict = require('./auth').restrict;
-  , passport = require('./auth').passport;
-  , authenticate = require('./auth').authenticate;
+  , path = require('path')
+  , restrict = require('./auth').restrict
+  , passport = require('./auth').passport
+  , authenticate = require('./auth').authenticate
 
 var app = express();
 
