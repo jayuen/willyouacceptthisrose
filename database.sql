@@ -20,21 +20,21 @@
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "girls_id_seq";
 CREATE SEQUENCE "girls_id_seq" INCREMENT 1 START 51 MAXVALUE 9223372036854775807 MINVALUE 1 CACHE 1;
-ALTER TABLE "girls_id_seq" OWNER TO "matt";
+ALTER TABLE "girls_id_seq" OWNER TO "nulogy";
 
 -- ----------------------------
 --  Sequence structure for "users_id_seq"
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "users_id_seq";
 CREATE SEQUENCE "users_id_seq" INCREMENT 1 START 1 MAXVALUE 9223372036854775807 MINVALUE 1 CACHE 1;
-ALTER TABLE "users_id_seq" OWNER TO "matt";
+ALTER TABLE "users_id_seq" OWNER TO "nulogy";
 
 -- ----------------------------
 --  Sequence structure for "weeks_id_seq"
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "weeks_id_seq";
 CREATE SEQUENCE "weeks_id_seq" INCREMENT 1 START 1 MAXVALUE 9223372036854775807 MINVALUE 1 CACHE 1;
-ALTER TABLE "weeks_id_seq" OWNER TO "matt";
+ALTER TABLE "weeks_id_seq" OWNER TO "nulogy";
 
 -- ----------------------------
 --  Table structure for "weeks"
@@ -49,7 +49,7 @@ CREATE TABLE "weeks" (
 	"fourth" int4 NOT NULL
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "weeks" OWNER TO "matt";
+ALTER TABLE "weeks" OWNER TO "nulogy";
 
 -- ----------------------------
 --  Table structure for "users"
@@ -66,7 +66,7 @@ CREATE TABLE "users" (
 	"score" int4
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "users" OWNER TO "matt";
+ALTER TABLE "users" OWNER TO "nulogy";
 
 -- ----------------------------
 --  Table structure for "candidates"
@@ -77,7 +77,7 @@ CREATE TABLE "candidates" (
 	"name" text NOT NULL
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "candidates" OWNER TO "matt";
+ALTER TABLE "candidates" OWNER TO "nulogy";
 
 
 -- ----------------------------
