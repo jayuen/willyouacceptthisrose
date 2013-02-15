@@ -1,7 +1,7 @@
 var pg = require("pg").native;
 var defer = require("q").defer;
 
-var connection = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose"
+var connection = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose";
 var client = pg.Client(connection);
 
 client.connect();
@@ -29,10 +29,18 @@ var db = {
     return result.promise;
   },
 
-  findUser: function(name){
+  insertUser: function(email){
     var result = defer();
 
-    client.query("SELECT * FROM users WHERE name = '" + name + "'", function(err, data){
+    client.query("INSERT INTO users(email, name) VALUES($1, $1)", [email], result.resolve);
+
+    return result.promise;
+  },
+
+  findUser: function(email){
+    var result = defer();
+
+    client.query("SELECT * FROM users WHERE email = $1", [email], function(err, data){
       if(!err){
         result.resolve(data.rows[0]);
       }else{
@@ -40,7 +48,25 @@ var db = {
       }
     });
 
-    return result.promise
+    return result.promise;
+  },
+
+  findOrCreateUser: function(email){
+    var result = defer();
+    var create = this.insertUser;
+    var find = this.findUser;
+
+    find(email).then(function(user){
+      if(user){
+        result.resolve(user);
+      }else{
+        create(email).then(function(){
+          result.resolve({email: email});
+        });
+      }
+    }, result.reject);
+
+    return result.promise;
   }
 };
 
