@@ -1,0 +1,4 @@
+npm_modules
+views/*.styl
+public/*.*
+.git

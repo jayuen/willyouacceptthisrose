@@ -11,11 +11,12 @@
     "stylus": "*",
     "pg": "*",
     "q": "*",
-    "step": "*"
+    "step": "*",
+    "passport": "*",
+    "passport-google": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "chai": "*"
   }
-
 }
