@@ -1,12 +1,10 @@
-var pg = require("pg").native;
 var expect = require("chai").expect;
 var db = require("../db");
 var step = require("step");
 
-var connection = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose_test";
-var client = pg.Client(connection);
-
-client.connect();
+db.connectionString = "tcp://nulogy:Nulogy4Ever@localhost/willyouacceptthisrose_test";
+db.initialize();
+var client = db.client;
 
 describe("DB", function(){
   describe("candidates", function(){
@@ -71,28 +69,30 @@ describe("DB", function(){
     it("can have picks updated", function(done){
       var user = {
         email: 'foo@bar.net',
-        pick1: 'one',
-        pick2: '2'
+        name: 'foo@bar.net',
+        pick1: 1,
+        pick2: 2,
+        pick3: 3,
+        pick4: 4,
+        score: null
       };
 
       step(
         function(){
-          db.insertUser(user.email).then(this)
+          client.query(
+            "INSERT INTO users(name, email, pick1, pick2, pick3, pick4) " +
+            "VALUES($1, $1, $2, $2, $2, $2)",
+            [user.email, 50], this);
         },
         function(){
-          db.updatePicks(user)
+          db.updatePicks(user).then(this);
         },
         function(){
-          client.query("SELECT * FROM users", this)
+          db.findUser(user.email).then(this);
         },
-        function(err, result){
-          var data = result.rows[0];
-
-          expect(data.pick1).to.equal('one');
-          expect(data.pick2).to.equal('2');
-          expect(data.pick3).to.be.undefined;
-          expect(data.pick4).to.be.undefined;
-
+        function(updatedUser){
+          delete updatedUser.id;
+          expect(updatedUser).to.deep.equal(user);
           this();
         },
         done
@@ -101,6 +101,7 @@ describe("DB", function(){
 
     it("can be found", function(done) {
       step(
+
         function(){
           client.query("INSERT INTO users(name, email) VALUES('foo@bar.net', 'foo@bar.net')", this);
         },

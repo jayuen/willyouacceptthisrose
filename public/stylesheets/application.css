@@ -31,18 +31,18 @@ h1 {
 }
 
 .header {
-	background-image:url(hdr.png) center;
+	background-image:url(/images/hdr.png) center;
 
 }
 
 
 .bottom {
-	background-image:url(bottom.png);
+	background-image:url(/images/bottom.png);
 	height: 191px;
 	   position:absolute;
    bottom:0;
-   width:100%;
-   margin: 0 -px;
+    left: 0;
+    right: 0;
    padding: 0;
 }	
 

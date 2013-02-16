@@ -14,6 +14,7 @@ var express = require('express')
   , authenticate = require('./auth').authenticate
   , hbs = require('hbs')
   , flash = require('connect-flash')
+  , db = require('./db')
 
 var app = express();
 
@@ -56,3 +57,5 @@ hbs.registerHelper('selected-if-equal', function(val1, val2){
   console.log("IN HELPER!!!!", val1, val2)
   return (val1 == val2) ? " selected='selected'" : ""
 });
+
+db.initialize()

@@ -14,6 +14,7 @@
     "step": "*",
     "passport": "*",
     "passport-google": "*",
+    "underscore": "*",
     "connect-flash": "*"
   },
   "devDependencies": {
