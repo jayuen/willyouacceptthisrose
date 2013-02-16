@@ -5,7 +5,6 @@ module.exports = {
   edit: function(req, res){
     db.findAllCandidates().then(function(candidates){
       var user = req.user;
-      console.log(user);
 
       res.render("edit_picks", {
         title: "Make your final picks",
