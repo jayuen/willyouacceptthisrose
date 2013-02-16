@@ -13,18 +13,18 @@
 
 <p>{{ notice }}</p>
 
-<p>Week 8</p>
-
 <div class="form">
   <form action='/edit_picks' method='POST'>
-    <input type='hidden' name='week' value='8'/>
+    <p>
+      <a href='/'>Go home</a>
+    </p>
 
     <p>
       <label>First</label><br/>
       <select name="pick1">
         <option value=''></option>
         {{#candidates}}
-          <option value='{{id}}'{{selected-if-equal id user/pick1}}>{{name}}</option>
+          <option value='{{id}}'{{selected-if-equal id ../user/pick1}}>{{name}}</option>
         {{/candidates}}
       </select>
     </p>
@@ -33,7 +33,7 @@
       <select name="pick2">
         <option value=''></option>
         {{#candidates}}
-          <option value='{{id}}'{{selected-if-equal id user/pick2}}>{{name}}</option>
+          <option value='{{id}}'{{selected-if-equal id ../user/pick2}}>{{name}}</option>
         {{/candidates}}
       </select>
     </p>
@@ -42,7 +42,7 @@
       <select name="pick3">
         <option value=''></option>
         {{#candidates}}
-          <option value='{{id}}'{{selected-if-equal id user/pick3}}>{{name}}</option>
+          <option value='{{id}}'{{selected-if-equal id ../user/pick3}}>{{name}}</option>
         {{/candidates}}
       </select>
     </p>
@@ -51,13 +51,13 @@
       <select name="pick4">
         <option value=''></option>
         {{#candidates}}
-          <option value='{{id}}'{{selected-if-equal id user/pick4}}>{{name}}</option>
+          <option value='{{id}}'{{selected-if-equal id ../user/pick4}}>{{name}}</option>
         {{/candidates}}
       </select><br/>
     </p>
 
     <p>
-      <button>Submit week 8 results</button>
+      <button>Submit final picks</button>
     </p>
   </form>
 </div>
