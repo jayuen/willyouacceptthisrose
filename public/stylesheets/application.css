@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Helvetica", Lucida Grande, Arial, sans-serif;
+
   background-color: #390805;
   color: #fff;
 background-image: linear-gradient(right , rgb(89,33,36) 22%, rgb(58,7,4) 74%);
@@ -15,12 +16,15 @@ background-image: -webkit-gradient(
 	left bottom,
 	color-stop(0.22, rgb(89,33,36)),
 	color-stop(0.74, rgb(58,7,4))
-)
-;
+
+);
+
 }
 a {
   color: #fff;
 }
+
+
 
 h1 {
 	font: 34px "Garamond", serif;
@@ -28,14 +32,10 @@ h1 {
 
 .header {
 	background-image:url(hdr.png) center;
-text-align:center;
-color: black;
 
 }
 
-<<<<<<< HEAD
-	
-=======
+
 .bottom {
 	background-image:url(bottom.png);
 	height: 191px;
@@ -55,4 +55,4 @@ color: black;
 	border-radius: 5px;
 	border-radius: 5px; 
 }
->>>>>>> Uploaded bottom image and style updates
+
